@@ -34,23 +34,16 @@ void EngineLoop::start() {
     
     /* Main Rendering Loop */
     while(!glfwWindowShouldClose(window)) {
-        
         displayManager.updateViewportSize();
         
         rendererManager.prepare(scene);
         rendererManager.render(scene);
         rendererManager.drawGUI(window, imGui, scene);
         rendererManager.cleanup(window);
-        
     }
         
-        
-        // Cleanup Before Window Termination
-        imGui.shutDown();
-    
-    
-    
-    
+    // Cleanup Before Window Termination
+    imGui.shutDown();
     guiManager.shutDown();
     rendererManager.shutDown(scene);
     assetManager.shutDown();

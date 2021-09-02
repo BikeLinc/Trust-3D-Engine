@@ -8,7 +8,6 @@
 
 #include "DisplayManager.hpp"
 
-
 void DisplayManager::startUp() {
     initGLFW();
 }
@@ -21,40 +20,54 @@ GLFWwindow* DisplayManager::getWindowReference() {
     if(m_window == NULL) {
         m_window = createWindowReference();
         initGLEW();
-    }
-    if(m_window == NULL) {
-        std::cout << "Cannot Create A Valid GLFW Reference" << std::endl;
-        return NULL;
+        if(m_window == NULL) { // Double check if initialization failed above
+            std::cout << "Cannot Create A Valid GLFW Reference" << std::endl;
+            return NULL;
+        }
     }
     return m_window;
 }
 
 int DisplayManager::getWindowWidth() {
-    return m_screenWidth;
+    if(m_window == NULL) { // Dont return anything if there is no window
+        return 0;
+    } else {
+        updateViewportSize();
+        return m_screenWidth;
+    }
 }
 
 int DisplayManager::getWindowHeight() {
+    if(m_window == NULL) { // Dont return anything if there is no window
+        return 0;
+    } else {
+        updateViewportSize();
     return m_screenWidth;
+    }
 }
 
 void DisplayManager::updateViewportSize() {
+    // Get width and height
     glfwGetFramebufferSize(m_window, &m_screenWidth, &m_screenHeight);
+    // Set viewport width and height with an offset to avoid streaching
     glViewport(0, -(m_screenWidth - m_screenHeight)/2 ,m_screenWidth ,m_screenWidth);
 }
     
 GLFWwindow* DisplayManager::createWindowReference() {
     GLFWwindow *window = glfwCreateWindow(600,400,"GLFW-OpenGL Window", nullptr, nullptr);
-    glfwGetFramebufferSize(window, &m_screenWidth, &m_screenHeight);
-    if (nullptr == window) {
+    if (nullptr == window) { // If window wasnt initialized, shut the engine down.
         std::cout << "Failed To Create GLFW Window" << std::endl;
-        glfwTerminate();
+        shutDown();
         return NULL;
     }
     glfwMakeContextCurrent(window);
     glfwGetFramebufferSize(window, &m_screenWidth, &m_screenHeight);
     
+    // Enable 3D Depth
     glEnable(GL_BLEND);
     glEnable(GL_DEPTH_TEST);
+    
+    // Enable JPEG and RGBA
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     
     return window;
@@ -71,10 +84,12 @@ void DisplayManager::initGLFW() {
 
 void DisplayManager::initGLEW() {
     glewExperimental = GL_TRUE;
-    if(GLEW_OK != glewInit()) {
+    if(GLEW_OK != glewInit()) { // If GLEW wasnt initialized, shut the engine down
         std::cout << "Failed To Initialize GLEW" << std::endl;
+        shutDown();
     }
-    glViewport(0,0, m_screenWidth, m_screenHeight);
+    // Set viewport width and height with an offset to avoid streaching
+    glViewport(0, -(m_screenWidth - m_screenHeight)/2 ,m_screenWidth ,m_screenWidth);
 }
 
 void DisplayManager::terminateGLFW() {

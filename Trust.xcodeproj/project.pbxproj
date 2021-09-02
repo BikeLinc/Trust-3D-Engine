@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE44035926DFD50000D444C8 /* SceneManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE44035726DFD50000D444C8 /* SceneManager.cpp */; };
+		CE44035E26DFDE4400D444C8 /* EventHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE44035C26DFDE4400D444C8 /* EventHandler.cpp */; };
 		CE706742260BD2A4000E36CD /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE706741260BD2A4000E36CD /* OpenGL.framework */; };
 		CE706744260BD2E9000E36CD /* libGLEW.2.2.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CE706743260BD2E8000E36CD /* libGLEW.2.2.0.dylib */; };
 		CE706746260BD300000E36CD /* libglfw.3.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CE706745260BD300000E36CD /* libglfw.3.3.dylib */; };
@@ -57,6 +59,11 @@
 
 /* Begin PBXFileReference section */
 		CE08C49B26C72D6200019834 /* design_document.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = design_document.txt; sourceTree = "<group>"; };
+		CE44035726DFD50000D444C8 /* SceneManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SceneManager.cpp; sourceTree = "<group>"; };
+		CE44035826DFD50000D444C8 /* SceneManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SceneManager.hpp; sourceTree = "<group>"; };
+		CE44035B26DFDBCC00D444C8 /* Event.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		CE44035C26DFDE4400D444C8 /* EventHandler.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = EventHandler.cpp; sourceTree = "<group>"; };
+		CE44035D26DFDE4400D444C8 /* EventHandler.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = EventHandler.hpp; sourceTree = "<group>"; };
 		CE706736260BD1A9000E36CD /* Trust */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Trust; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE706741260BD2A4000E36CD /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		CE706743260BD2E8000E36CD /* libGLEW.2.2.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEW.2.2.0.dylib; path = ../../../../usr/local/Cellar/glew/2.2.0_1/lib/libGLEW.2.2.0.dylib; sourceTree = "<group>"; };
@@ -145,6 +152,16 @@
 			path = Planning;
 			sourceTree = "<group>";
 		};
+		CE44035A26DFDBB800D444C8 /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				CE44035B26DFDBCC00D444C8 /* Event.h */,
+				CE44035C26DFDE4400D444C8 /* EventHandler.cpp */,
+				CE44035D26DFDE4400D444C8 /* EventHandler.hpp */,
+			);
+			path = Event;
+			sourceTree = "<group>";
+		};
 		CE70672D260BD1A9000E36CD = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +186,7 @@
 		CE706738260BD1A9000E36CD /* Trust */ = {
 			isa = PBXGroup;
 			children = (
+				CE44035A26DFDBB800D444C8 /* Event */,
 				CEB6FC9726DDC272000211DF /* Managers */,
 				CEB6FC9326DAD171000211DF /* Core */,
 				CEB6FC9226DAD14C000211DF /* Scene */,
@@ -244,6 +262,8 @@
 				CEEF17F426D7D7B0004DFF93 /* Light.cpp */,
 				CEEF17F526D7D7B0004DFF93 /* Light.hpp */,
 				CEF618A226DF2DC9009E3688 /* Scene.h */,
+				CE44035726DFD50000D444C8 /* SceneManager.cpp */,
+				CE44035826DFD50000D444C8 /* SceneManager.hpp */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -349,11 +369,13 @@
 				CEF6188C26DE98A5009E3688 /* AssetManager.cpp in Sources */,
 				CE8FB94126D6E28D0030B681 /* SOIL2.c in Sources */,
 				CE8FB92826D6E27E0030B681 /* imgui_draw.cpp in Sources */,
+				CE44035E26DFDE4400D444C8 /* EventHandler.cpp in Sources */,
 				CE8FB92426D6E27E0030B681 /* imgui.cpp in Sources */,
 				CEF6189526DE9908009E3688 /* RendererManager.cpp in Sources */,
 				CE8FB92726D6E27E0030B681 /* imgui_demo.cpp in Sources */,
 				CEF6189226DE98C6009E3688 /* GUIManager.cpp in Sources */,
 				CE706771260CD0ED000E36CD /* ImGuiManager.cpp in Sources */,
+				CE44035926DFD50000D444C8 /* SceneManager.cpp in Sources */,
 				CEEF17F326D7D76D004DFF93 /* Mesh.cpp in Sources */,
 				CE8FB91526D6D9FC0030B681 /* EngineLoop.cpp in Sources */,
 				CE8FB94026D6E28D0030B681 /* image_DXT.c in Sources */,
